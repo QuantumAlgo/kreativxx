@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { Grid,AppBar,Toolbar, Tabs, Tab,Typography } from '@mui/material'
-const Navbar = ()  => {
+const Navbar = ({links})  => {
   const [value,setvalue] = useState();
   return (
     <div>
@@ -13,6 +13,9 @@ const Navbar = ()  => {
                 </Grid>
                   <Grid item xs = {6} >
                       <Tabs indicatorColor='secondary' textColor = 'inherit'  value = {value} onChange={(e,val) => setvalue(val)}>
+                      {/* {Links.map((Link,index)=>(
+                        <Tab key = {index} label = {Link}  />
+                      ))} */}
                         <Tab label='Home'/>
                         <Tab label='About'/>
                         <Tab label='Industries'/>
