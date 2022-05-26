@@ -1,36 +1,94 @@
+import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
+import "./NavBar.css";
 
-import React, { useState } from 'react';
-import { Grid,AppBar,Toolbar, Tabs, Tab,Typography } from '@mui/material'
-const Navbar = ({links})  => {
-  const [value,setvalue] = useState();
+function NavBar() {
+  const [click, setClick] = useState(false);
+
+  const handleClick = () => setClick(!click);
   return (
-    <div>
-        <AppBar color='inherit'>
-          <Toolbar>
-            <Grid container>
-                <Grid item xs = {3}>
-                  <Typography variant = 'h4' >CreativeStudio</Typography>
-                </Grid>
-                  <Grid item xs = {6} >
-                      <Tabs indicatorColor='secondary' textColor = 'inherit'  value = {value} onChange={(e,val) => setvalue(val)}>
-                      {/* {Links.map((Link,index)=>(
-                        <Tab key = {index} label = {Link}  />
-                      ))} */}
-                        <Tab label='Home'/>
-                        <Tab label='About'/>
-                        <Tab label='Industries'/>
-                        <Tab label='Portfolio'/>
-                        <Tab label='Services'/>
-                        <Tab label='Blog'/>
-                    </Tabs> 
-                  </Grid>
-            </Grid>
-          </Toolbar>
-        </AppBar>  
-    </div>
-  )
+    <>
+      <nav className="navbar">
+        <div className="nav-container">
+          <NavLink exact to="/homepage" className="nav-logo">
+            CREATIVESTUDIO
+          </NavLink>
+
+          <ul className={click ? "nav-menu active" : "nav-menu"}>
+            <li className="nav-item">
+              <NavLink
+                exact
+                to="/homepage"
+                activeClassName="active"
+                className="nav-links"
+                onClick={handleClick}
+              >
+                Home
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink
+                exact
+                to="/about"
+                activeClassName="active"
+                className="nav-links"
+                onClick={handleClick}
+              >
+                About
+              </NavLink>
+            </li>
+              <li className="nav-item">
+              <NavLink
+                exact
+                to="/services"
+                activeClassName="active"
+                className="nav-links"
+                onClick={handleClick}
+              >
+                Services
+              </NavLink>
+            </li>
+              <li className="nav-item">
+              <NavLink
+                exact
+                to="/portfolio"
+                activeClassName="active"
+                className="nav-links"
+                onClick={handleClick}
+              >
+                Portfolio
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink
+                exact
+                to="/blog"
+                activeClassName="active"
+                className="nav-links"
+                onClick={handleClick}
+              >
+                Blog
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink
+                exact
+                to="/contact"
+                activeClassName="active"
+                className="nav-links"
+                onClick={handleClick}
+              >
+                Contact Us
+              </NavLink>
+            </li>
+          </ul>
+          <div className="nav-icon" onClick={handleClick}>
+            <i className={click ? "fas fa-times" : "fas fa-bars"}></i>
+          </div>
+        </div>
+      </nav>
+    </>
+  );
 }
 
-export default Navbar;
-
-            
+export default NavBar;

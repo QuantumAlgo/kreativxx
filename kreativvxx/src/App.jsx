@@ -4,15 +4,23 @@ import Navbar from "./Navbar";
 import "./App.css";
 import AboutPage from "./Component/About";
 import Homepage from "./Component/homepage";
-const [linksArray] = ['Home','About','Services','Industries','Blog','Portfolio']
+import BlogPage from "./Component/Blog";
+import ServicesPage from "./Component/services";
+import IndustriesPage from "./Component/Industries";
+import PortfolioPage from "./Component/Portfolio";
 
 function App() {
   return (
     <div className="App">
-      <Navbar links = {linksArray} />
+      <Navbar />
       <Routes>
-        <Route path="/" element={<Homepage />} />
-        <Route path="about" element={<AboutPage />} />
+        <Route path="/homepage" element={<Homepage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/services" element={<ServicesPage />} />
+        <Route path="/industries" element={<IndustriesPage />} />
+        <Route path="/blog" element={<BlogPage />} />
+        <Route path="/portfolio" element={<PortfolioPage />} />
+        <Route path="/contact" element={<AboutPage />} />
       </Routes>
     </div>
   );
